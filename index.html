@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebAR UMSIDA</title>
+    <script src="https://cdn.8thwall.com/web/aframe/8frame.2.0.0.min.js"></script>
+    <script src="https://cdn.8thwall.com/web/aframe/aframe-ar.min.js"></script>
+  </head>
+  <body>
+    <a-scene mindar-image="imageTargetSrc: targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: true">
+      <a-assets>
+        <video id="video" autoplay loop="true" src="video.mp4" crossorigin="anonymous"></video>
+      </a-assets>
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-video src="#video" width="1" height="1.5" position="0 0 0"></a-video>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>

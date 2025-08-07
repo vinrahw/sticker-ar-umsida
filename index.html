@@ -1,34 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WebAR UMSIDA</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
   </head>
-  <body>
-    <script>
-      AFRAME.registerComponent('play-video', {
-        init: function () {
-          this.el.addEventListener('targetFound', e => {
-            const video = document.querySelector("#video");
-            video.play();
-          });
-        }
-      });
-    </script>
-
-    <a-scene mindar-image="imageTargetSrc: targets.mind;" color-space="sRGB" embedded
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene mindar-image="imageTargetSrc: targets.mind;"
+             color-space="sRGB"
              renderer="colorManagement: true, physicallyCorrectLights"
-             vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: true">
-      
+             vr-mode-ui="enabled: false"
+             device-orientation-permission-ui="enabled: true">
       <a-assets>
         <video id="video" src="video.mp4" loop crossorigin="anonymous" playsinline></video>
       </a-assets>
-
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-
-      <a-entity mindar-image-target="targetIndex: 0" play-video>
+      <a-entity mindar-image-target="targetIndex: 0">
         <a-video src="#video" width="1" height="0.5625" position="0 0 0"></a-video>
       </a-entity>
     </a-scene>

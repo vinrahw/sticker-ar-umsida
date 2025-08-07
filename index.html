@@ -4,38 +4,31 @@
     <title>WebAR UMSIDA</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/aframe/build/mindar-aframe.prod.js"></script>
-
+    <script src="https://cdn.8thwall.com/web/aframe/8frame.2.0.0.min.js"></script>
+    <script src="https://cdn.8thwall.com/web/aframe/aframe-ar.min.js"></script>
+    
     <style>
       html, body {
         margin: 0;
         padding: 0;
+        overflow: hidden;
         height: 100%;
         width: 100%;
-        overflow: hidden;
       }
 
       a-scene {
-        height: 100%;
-        width: 100%;
         position: absolute;
         top: 0;
         left: 0;
+        height: 100%;
+        width: 100%;
       }
     </style>
   </head>
   <body>
-    <a-scene
-      mindar-image="imageTargetSrc: targets.mind"
-      color-space="sRGB"
-      renderer="colorManagement: true, physicallyCorrectLights"
-      vr-mode-ui="enabled: false"
-      device-orientation-permission-ui="enabled: true"
-      embedded
-    >
+    <a-scene mindar-image="imageTargetSrc: targets.mind" embedded>
       <a-assets>
-        <video id="video" src="video.mp4" autoplay loop="true" crossorigin="anonymous"></video>
+        <video id="video" autoplay loop="true" src="video.mp4" crossorigin="anonymous"></video>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>

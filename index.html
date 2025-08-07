@@ -2,11 +2,12 @@
 <html>
   <head>
     <title>WebAR UMSIDA</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- A-Frame dan MindAR -->
     <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/aframe/build/mindar-aframe.prod.js"></script>
-    
+
     <style>
       html, body {
         margin: 0;
@@ -15,33 +16,39 @@
         height: 100%;
         width: 100%;
       }
-
       a-scene {
+        height: 100vh;
+        width: 100vw;
         position: absolute;
         top: 0;
         left: 0;
-        height: 100%;
-        width: 100%;
       }
     </style>
   </head>
+
   <body>
     <a-scene
       mindar-image="imageTargetSrc: targets.mind"
       color-space="sRGB"
+      embedded
       renderer="colorManagement: true, physicallyCorrectLights"
       vr-mode-ui="enabled: false"
       device-orientation-permission-ui="enabled: true"
-      embedded
     >
       <a-assets>
-        <video id="video" autoplay loop="true" src="video.mp4" crossorigin="anonymous"></video>
+        <video id="video" src="video.mp4" preload="auto" loop crossorigin="anonymous" webkit-playsinline playsinline></video>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
       <a-entity mindar-image-target="targetIndex: 0">
-        <a-video src="#video" width="1" height="1.5" position="0 0 0"></a-video>
+        <a-video
+          src="#video"
+          width="1"
+          height="0.6"
+          position="0 0 0"
+          rotation="0 0 0"
+        ></a-video>
       </a-entity>
     </a-scene>
   </body>
